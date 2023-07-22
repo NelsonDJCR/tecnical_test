@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::controller(ApiController::class)->group(function () {
+    Route::get('user/{id}', 'getUser');
+    Route::get('users', 'getUsers');
+});
+
